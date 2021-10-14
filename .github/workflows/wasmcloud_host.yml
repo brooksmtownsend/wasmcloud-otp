@@ -10,7 +10,7 @@ on:
     inputs:
       artifacts:
         description: "Build linux, macos, and windows artifacts? (y/n)"
-        default: "y"
+        default: 'y'
         required: true
 
 env:
