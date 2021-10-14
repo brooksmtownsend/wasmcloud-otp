@@ -9,8 +9,8 @@ on:
   workflow_dispatch: # Allow manual creation of artifacts without a release
     inputs:
       artifacts:
-        description: "Build linux, macos, and windows artifacts? (enter y)"
-        default: "n"
+        description: "Build linux, macos, and windows artifacts? (y/n)"
+        default: "y"
         required: true
 
 env:
