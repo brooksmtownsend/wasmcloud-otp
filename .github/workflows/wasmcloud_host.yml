@@ -338,7 +338,6 @@ jobs:
   release-linux:
     name: Release Linux Tarball
     needs: build
-    if: startswith(github.ref, 'refs/tags/') # Only run on tag push
     # Run on tag push or on manual dispatch. Release will not be created for manual dispatch
     if: ${{ ( startswith(github.ref, 'refs/tags/') || github.events.inputs.artifacts ) }}
     runs-on: ubuntu-20.04
