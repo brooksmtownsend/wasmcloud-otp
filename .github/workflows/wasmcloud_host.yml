@@ -90,8 +90,7 @@ jobs:
 
   release-docker:
     needs: build
-    # if: startswith(github.ref, 'refs/tags/') # Only run on tag push
-    if: ${{ startswith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch' }}
+    if: startswith(github.ref, 'refs/tags/') # Only run on tag push
 
     name: Release Linux Docker Image
     runs-on: ubuntu-18.04
