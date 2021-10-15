@@ -246,7 +246,6 @@ jobs:
         if: ${{ startswith(matrix.os, 'macos') }}
         run: echo "tarball_filename=x86_64-macos" > $GITHUB_ENV
       - name: Determine tarball filename
-        shell: bash
         if: ${{ startswith(matrix.os, 'ubuntu') }}
         run: echo "tarball_filename=x86_64-linux" > $GITHUB_ENV
       - name: Determine tarball filename
