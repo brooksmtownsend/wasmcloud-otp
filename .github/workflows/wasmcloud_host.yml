@@ -131,6 +131,7 @@ jobs:
           context: .
           push: true
           file: ${{env.working-directory}}/Dockerfile
+          platforms: linux/amd64,linux/arm64
           build-args: |
             BUILDER_IMAGE=elixir:1.12.2-slim
             BUILD_INSTALL=apt-build-install.sh
