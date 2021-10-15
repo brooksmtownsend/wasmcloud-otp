@@ -269,7 +269,7 @@ jobs:
 
   github-release:
     if: startswith(github.ref, 'refs/tags/') # Only run on tag push
-    needs: [release-linux, release-macos, release-windows]
+    needs: [create-tarballs]
     runs-on: ubuntu-20.04
     steps:
       - name: Download Release Tarballs
