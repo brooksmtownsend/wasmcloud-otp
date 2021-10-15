@@ -7,11 +7,6 @@ on:
   pull_request:
     branches: [main]
   workflow_dispatch: # Allow manual creation of artifacts without a release
-    inputs:
-      artifacts:
-        description: "Build linux, macos, and windows artifacts? (y/n)"
-        default: 'y'
-        required: true
 
 env:
   working-directory: wasmcloud_host
@@ -154,7 +149,7 @@ jobs:
     name: Release MacOS Tarball
     needs: build
     # Run on tag push or on manual dispatch. Release will not be created for manual dispatch
-    if: ${{ startswith(github.ref, 'refs/tags/') || github.events.inputs.artifacts == 'y' }}
+    if: ${{ startswith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch' }}
     runs-on: macos-10.15
     env:
       MIX_ENV: prod
@@ -252,7 +247,7 @@ jobs:
   release-windows:
     name: Release Windows Tarball
     # Run on tag push or on manual dispatch. Release will not be created for manual dispatch
-    if: ${{ startswith(github.ref, 'refs/tags/') || github.events.inputs.artifacts == 'y' }}
+    if: ${{ startswith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch' }}
     needs: build
     runs-on: windows-2019
     defaults:
@@ -339,7 +334,7 @@ jobs:
     name: Release Linux Tarball
     needs: build
     # Run on tag push or on manual dispatch. Release will not be created for manual dispatch
-    if: ${{ startswith(github.ref, 'refs/tags/') || github.events.inputs.artifacts == 'y' }}
+    if: ${{ startswith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-20.04
     env:
       MIX_ENV: prod
